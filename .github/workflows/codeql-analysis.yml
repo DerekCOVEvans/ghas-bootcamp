@@ -55,8 +55,8 @@ jobs:
         
     # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
-    # - name: Autobuild
-    #   uses: github/codeql-action/autobuild@v2
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v2
 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
@@ -67,35 +67,6 @@ jobs:
     # - run: |
     #   echo "Run, Build Application using script"
     #   ./location_of_script_within_repo/buildscript.sh
-
-    - if: matrix.language != 'java'
-      name: Autobuild
-      uses: github/codeql-action/autobuild@v2
-
-    - if: matrix.language == 'java' 
-      name: Get Java info
-      run: |
-        echo list current directory
-        ls -a
-        echo
-        echo java version
-        java -version
-        echo 
-        echo git version
-        git --version
-        echo
-        echo maven version
-        mvn --version
-        echo
-        echo get JAVA_HOME var
-        echo $JAVA_HOME
-        echo
-
-
-    - name: action-maven
-      # You may pin to the exact commit or the version.
-      # uses: comchangs/action-maven@54db702e085ac767dad94c87e84499afb9d77162
-      uses: comchangs/action-maven@v0.4-beta
 
 
     - name: Perform CodeQL Analysis
