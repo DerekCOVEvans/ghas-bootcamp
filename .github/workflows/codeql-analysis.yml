@@ -73,7 +73,7 @@ jobs:
       uses: github/codeql-action/autobuild@v2
 
     - if: matrix.language == 'java' 
-      name: Build Java Maven
+      name: Get Java info
       run: |
         echo list current directory
         ls -a
@@ -87,12 +87,8 @@ jobs:
         echo maven version
         mvn --version
         echo
-        echo start maven build
-        /home/runner/work/ghas-bootcamp/ghas-bootcamp/./storage-service/mvnw, clean, package, -f, pom.xml, -B, -V, -X, -e, -Dfindbugs.skip, -Dcheckstyle.skip, -Dpmd.skip=true, -Dspotbugs.skip, -Denforcer.skip, -Dmaven.javadoc.skip, -DskipTests, -Dmaven.test.skip.exec, -Dlicense.skip=true, -Drat.skip=true, -Dspotless.check.skip=true
-        echo
-        echo list target directory
-        cd target
-        ls -a
+        echo get JAVA_HOME var
+        echo $JAVA_HOME
         echo
 
 
