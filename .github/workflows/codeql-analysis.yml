@@ -87,16 +87,19 @@ jobs:
         echo maven version
         mvn --version
         echo
-        echo change to storage-service directory
-        cd storage-service
-        echo
         echo start maven build
-        mvnw, clean, package, -f, pom.xml, -B, -V, -X, -e, -Dfindbugs.skip, -Dcheckstyle.skip, -Dpmd.skip=true, -Dspotbugs.skip, -Denforcer.skip, -Dmaven.javadoc.skip, -DskipTests, -Dmaven.test.skip.exec, -Dlicense.skip=true, -Drat.skip=true, -Dspotless.check.skip=true
+        /home/runner/work/ghas-bootcamp/ghas-bootcamp/./storage-service/mvnw, clean, package, -f, pom.xml, -B, -V, -X, -e, -Dfindbugs.skip, -Dcheckstyle.skip, -Dpmd.skip=true, -Dspotbugs.skip, -Denforcer.skip, -Dmaven.javadoc.skip, -DskipTests, -Dmaven.test.skip.exec, -Dlicense.skip=true, -Drat.skip=true, -Dspotless.check.skip=true
         echo
         echo list target directory
         cd target
         ls -a
         echo
+
+
+    - name: action-maven
+      # You may pin to the exact commit or the version.
+      # uses: comchangs/action-maven@54db702e085ac767dad94c87e84499afb9d77162
+      uses: comchangs/action-maven@v0.4-beta
 
 
     - name: Perform CodeQL Analysis
