@@ -73,21 +73,29 @@ jobs:
       uses: github/codeql-action/autobuild@v2
 
     - if: matrix.language == 'java' 
-      name: Get image info
+      name: Build Java Maven
       run: |
-        echo What is in this directory?
+        echo list current directory
         ls -a
         echo
-        echo Is Java installed?
+        echo java version
         java -version
         echo 
-        echo Is Git installed?
+        echo git version
         git --version
         echo
-        echo What about build tools?
+        echo maven version
         mvn --version
-        gradle --version
-        ant -version
+        echo
+        echo change to storage-service directory
+        cd storage-service
+        echo
+        echo start maven build
+        mvn -B package --file pom.xml
+        echo
+        echo list target directory
+        cd target
+        ls -a
         echo
 
 
